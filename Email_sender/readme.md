@@ -10,4 +10,10 @@ Create the email preferences such as `subject` and `body`.
 
 Create an instance from the `EmailMessage` and preferences from the variables created before.
 
-Import the `ssl` and the `smtlib` libraries
+Import the `ssl` and the `smtlib` libraries. Create `context` with the `ssl.create_default_context()`.
+
+After that we use the `smtplib` to gain access to the sender email.
+```py
+with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+  smtp.login(email_sender, email_password)
+```
